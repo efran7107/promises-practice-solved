@@ -15,8 +15,17 @@
  * Example: export const getPromise = (bool) = return <Your promise constructor code>
  */
 
-export const getPromise = () => {
-  // Your code goes here...
+export const getPromise = (bool) => {
+  switch(bool){
+    case true:
+      var isRes = (res) => res('The PROMISE was RESOLVED');
+      var promise = new Promise(isRes);
+      return promise
+    case false:
+      var isRej = (rej) => rej('The PROMISE was REJECTED');
+      promise = new Promise(isRej);
+      return promise
+  }
 };
 
 /**
@@ -29,7 +38,7 @@ export const getPromise = () => {
  */
 
 export const handlePromise = () => {
-  // Your code goes here...
+  
 };
 
 // === TEST YOURSELF ===
