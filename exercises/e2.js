@@ -37,8 +37,10 @@ export const getPromise = (bool) => {
  * The handlePromise() function must be exported
  */
 
-export const handlePromise = () => {
-  
+export const handlePromise = (promise) => {
+  const suc = (data) => data;
+  const rej = (reason) => 'Uh Oh';
+  return promise.then(suc, rej)
 };
 
 // === TEST YOURSELF ===
