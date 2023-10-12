@@ -37,7 +37,13 @@ export const getPromise = (arg) => {
  */
 export const updateSumValue = () => {
   let sum = 2;
-  if()
+  sum = 10;
+  getPromise(120)
+  .then(data => {
+    data += sum;
+    data += 8
+    return data;
+  })
 
   return sum
 };
