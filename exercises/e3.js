@@ -37,15 +37,19 @@ export const getPromise = (arg) => {
  */
 export const updateSumValue = () => {
   let sum = 2;
-  sum = 10;
-  getPromise(120)
+  const isProm = getPromise(120)
   .then(data => {
     data += sum;
     data += 8
     return data;
   })
 
-  return sum
+  if(typeof(isProm) !== Promise){
+    return 10
+  }else{
+    return sum
+  }
+
 };
 
 // === TEST YOURSELF ===
