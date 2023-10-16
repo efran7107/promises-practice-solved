@@ -5,14 +5,26 @@
  * ```node exercises/test.js```
  */
 
-const attachTitle = (arg) => {
-  return 'DR. ' + arg
+function onReject(errObj) {
+  return console.log(errObj);
+}
+
+
+const handlePromise = (promise) => {
+  promise
+  .then((data) => {return data})
+  .catch((err) => {
+    if(err !== undefined){
+      return onReject(err);
+    }else{
+      return err;
+    }
+  })
 };
 
-const getPromise = () => {
-  return new Promise((res) => {res('MANHATTAN')});
-};
+const promise = new Promise((res, rej) => {
+  // res('OH NOES')
+  rej('REJECTED')
+})
 
-getPromise()
-.then((res) => attachTitle(res))
-.then((data) => console.log(data))
+handlePromise(promise)
