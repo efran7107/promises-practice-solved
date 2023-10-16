@@ -5,26 +5,27 @@
  * ```node exercises/test.js```
  */
 
+
 function onReject(errObj) {
-  return console.log(errObj);
+    return console.log(errObj);
 }
 
 
 const handlePromise = (promise) => {
-  promise
-  .then((data) => {return data})
-  .catch((err) => {
-    if(err !== undefined){
-      return onReject(err);
-    }else{
-      return err;
-    }
-  })
+    promise
+        .then((data) => { return data; })
+        .catch((err) => {
+            if (err !== undefined) {
+                return onReject(err);
+            } else {
+                return err;
+            }
+        })
 };
 
 const promise = new Promise((res, rej) => {
-  // res('OH NOES')
-  rej('REJECTED')
+    res(`yoyoyo, I'm jon H and I'm ready to go`)
+    rej('Rejected')
 })
 
 handlePromise(promise)

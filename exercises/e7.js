@@ -20,13 +20,13 @@
  */
 
 export function parsePromised(json) {
-  return new Promise((res, rej) => {
-    try{
-      res(JSON.parse(json));
-    } catch (err) {
-      rej(err);
-    }
-  })
+    return new Promise((res, rej) => {
+        try {
+            res(JSON.parse(json));
+        } catch (err) {
+            rej(err);
+        }
+    })
 }
 
 /**
@@ -37,7 +37,7 @@ export function parsePromised(json) {
  */
 
 export function onReject(errObj) {
-    return console.log(errObj.message);
+    console.log(errObj.message);
 }
 
 /**
@@ -53,16 +53,15 @@ export function onReject(errObj) {
  */
 
 export const handlePromise = (promise) => {
-  promise
-  .then((data) => {return data})
-  .catch((err) => {
-    if(err !== undefined){
-      return onReject(err);
-    }else{
-      console.log(err);
-      return err;
-    }
-  })
+    return promise
+        .then(val => { return val })
+        .catch((err) => {
+            if (err !== undefined) {
+                return onReject(err);
+            } else {
+                return err;
+            }
+        })
 };
 
 // === TEST YOURSELF ===
