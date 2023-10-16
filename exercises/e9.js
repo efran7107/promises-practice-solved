@@ -12,8 +12,10 @@
  */
 
 export function iterate(arg) {
-  // Your code goes here...
-  
+    console.log(arg);
+    arg += 1
+    return arg;
+
 }
 
 /**
@@ -23,8 +25,7 @@ export function iterate(arg) {
  */
 
 export function alwaysThrows() {
-  // Your code goes here...
-
+    throw Error('OH NOES')
 }
 
 /**
@@ -36,8 +37,15 @@ export function alwaysThrows() {
  * The function must be exported
  */
 
-export function onReject() {
-  // Your code goes here...
+export function onReject(val) {
+    switch (typeof(val) === String) {
+        case true:
+            console.log(val);
+            break;
+        case false:
+            console.log(val.message);
+            break;
+    }
 
 }
 
@@ -63,7 +71,15 @@ export function onReject() {
  */
 
 // Your code goes here...
-export const promise;
+export const promise = Promise.resolve(1)
+    .then((data) => iterate(data))
+    .then((data) => iterate(data))
+    .then((data) => iterate(data))
+    .then((data) => iterate(data))
+    .then((data) => iterate(data))
+    .then(() => alwaysThrows())
+    .catch((err) => onReject(err))
+
 
 
 
