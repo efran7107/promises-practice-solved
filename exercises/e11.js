@@ -26,7 +26,7 @@ export const usersUrl = 'http://localhost:3000/users/';
  * Example: const getLoginList = (data) => {<Your code>}
  */
 
-const getLoginList = (data) => { return data.map((i) => i.login); }
+const getLoginList = (data) => { return data.filter((i) => i.login !== undefined).map((i) => i.login); }
     /**
      * @task 
      * Create the getData constant that stores the promise 
@@ -35,8 +35,7 @@ const getLoginList = (data) => { return data.map((i) => i.login); }
      */
 
 // Your code goes here ...
-const getData = fetch(usersUrl)
-    .then(res => { return console.log(res) });
+const getData = fetch(usersUrl);
 
 /**
  * @task 
@@ -51,10 +50,10 @@ const getData = fetch(usersUrl)
 
 // Your code goes here ...
 export const result = getData
-    .then((data) => data.json())
+    .then((res) => res.json())
     .then(data => {
         console.log(getLoginList(data));
-        return getLoginList(data)
+        return getLoginList(data);
     });
 
 

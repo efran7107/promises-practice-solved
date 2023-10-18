@@ -8,12 +8,17 @@
 
 const usersUrl = 'http://localhost:3000/users/';
 
-const getLoginList = (data) => { return data.map((i) => i.login); }
-const getData = fetch(usersUrl)
-    .then(res => { return console.log(res) });
+const getLoginList = (data) => { return data.filter((i) => i.login !== undefined).map((i) => i.login); }
+
+const getData = fetch(usersUrl);
+
 const result = getData
-    .then((data) => data.json())
+    .then((res) => res.json())
     .then(data => {
+        const arr = getLoginList((data));
         console.log(getLoginList(data));
-        return getLoginList(data)
+        return arr
     });
+
+
+console.log(result);
