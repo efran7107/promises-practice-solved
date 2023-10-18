@@ -11,7 +11,7 @@
  * @init_data
  * * Import fetch function from 'node-fetch' to use the fetch() function in code
  * * set the usersUrl constant to store the json-server 'users' endpoint path
-*/
+ */
 
 export const usersUrl = 'http://localhost:3000/users/';
 
@@ -24,22 +24,19 @@ export const usersUrl = 'http://localhost:3000/users/';
  * Call example: getLoginList(data) => ['login1', 'login2']
  * You can use loops or array methods and any function syntax. No limits!
  * Example: const getLoginList = (data) => {<Your code>}
-*/
+ */
 
-const getLoginList = () => {
-  // Your code goes here...
-
-}
-
-/**
- * @task 
- * Create the getData constant that stores the promise 
- * of the fetched the URL variable:
- * example: const getData = <node_fetch_function_call>
-*/
+const getLoginList = (data) => { return data.map((i) => i.login); }
+    /**
+     * @task 
+     * Create the getData constant that stores the promise 
+     * of the fetched the URL variable:
+     * example: const getData = <node_fetch_function_call>
+     */
 
 // Your code goes here ...
-const getData;
+const getData = fetch(usersUrl)
+    .then(res => { return console.log(res) });
 
 /**
  * @task 
@@ -50,10 +47,15 @@ const getData;
  * Example: const result = getData
  *  .then(<Your_converting_code>)
  *  .then(<Your_logging_and_return_code>)
-*/
+ */
 
 // Your code goes here ...
-export const result = getData;
+export const result = getData
+    .then((data) => data.json())
+    .then(data => {
+        console.log(getLoginList(data));
+        return getLoginList(data)
+    });
 
 
 // === TEST YOURSELF ===
