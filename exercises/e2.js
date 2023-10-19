@@ -16,16 +16,11 @@
  */
 
 export const getPromise = (bool) => {
-  switch(bool){
-    case true:
-      var isRes = (res) => res('The PROMISE was RESOLVED');
-      var promise = new Promise(isRes);
-      return promise
-    case false:
-      var isRej = (rej) => rej('The PROMISE was REJECTED');
-      promise = new Promise(isRej);
-      return promise
-  }
+    return new Promise((res, rej) => {
+        const message = bool ? 'The PROMISE was RESOLVED' : 'The PROMISE was REJECTED';
+        if (bool) res(message)
+        else rej(message)
+    })
 };
 
 /**
@@ -38,9 +33,7 @@ export const getPromise = (bool) => {
  */
 
 export const handlePromise = (promise) => {
-  const suc = (data) => data;
-  const rej = (reason) => 'Uh Oh';
-  return promise.then(suc, rej)
+    return promise.then((data) => data, () => 'Uh Oh');
 };
 
 // === TEST YOURSELF ===

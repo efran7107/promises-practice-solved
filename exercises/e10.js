@@ -25,8 +25,9 @@ export const promiseArr = [promise1, promise2, promise3, promise4];
 
 // Your code goes here...
 export const handlePromise1 = Promise.all(promiseArr)
-    .catch((e) => {
-        return e
+    .then((data) => data)
+    .catch((err) => {
+        return err;
     });
 
 /**
@@ -44,7 +45,13 @@ export const handlePromise1 = Promise.all(promiseArr)
  */
 
 // Your code goes here...
-export const handlePromise2 = () => { return Promise.any(promiseArr).then((r) => { return r }) }
+export const handlePromise2 = () => {
+    return Promise.any(promiseArr)
+        .then((val) => {
+            return val;
+        })
+        .catch((err) => err);
+};
 
 /**
  * @task
@@ -61,16 +68,24 @@ export const handlePromise2 = () => { return Promise.any(promiseArr).then((r) =>
  */
 
 // Your code goes here...
-export const handlePromise3 = () => { return Promise.allSettled(promiseArr).then((val) => { return val }) }
-    /**
-     * @task
-     * Update the filter method callback to filter out any promise that will be settled before promise4
-     * so that the handlePromise4 function returns the resolved value of promise4 ('RESOLVED AGAIN')
-     * with the Promise.race() method, when the newPromiseArr is passes as the argument.
-     * The value of newPromiseArr MUST have more than one promise in the array!
-     */
+export const handlePromise3 = () => {
+    return Promise.allSettled(promiseArr)
+        .then((val) => {
+            return val;
+        })
+        .catch((err) => err);
+};
+/**
+ * @task
+ * Update the filter method callback to filter out any promise that will be settled before promise4
+ * so that the handlePromise4 function returns the resolved value of promise4 ('RESOLVED AGAIN')
+ * with the Promise.race() method, when the newPromiseArr is passes as the argument.
+ * The value of newPromiseArr MUST have more than one promise in the array!
+ */
 
-export const newPromiseArr = promiseArr.filter((p) => { return p !== promise4 });
+export const newPromiseArr = promiseArr.filter(
+    (p) => p !== promise2 && p !== promise3
+);
 
 // Do NOT refactor or update handlePromise4 function, it's all set to work
 export const handlePromise4 = (arr) => {

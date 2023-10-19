@@ -9,7 +9,7 @@
  */
 
 export const attachTitle = (arg) => {
-  return 'DR. ' + arg
+    return "DR. " + arg;
 };
 
 /**
@@ -21,9 +21,11 @@ export const attachTitle = (arg) => {
  */
 
 export const getPromise = () => {
-  return new Promise((res) => {res('MANHATTAN')})
-  .then((res) => attachTitle(res))
-  .then((data) => console.log(data));
+    return new Promise((res) => {
+            res("MANHATTAN");
+        })
+        .then((res) => attachTitle(res))
+        .then((data) => console.log(data));
 };
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-5"

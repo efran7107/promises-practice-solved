@@ -13,12 +13,12 @@
  * * set the usersUrl constant to store the json-server 'users' endpoint path
  */
 
-export const usersUrl = 'http://localhost:3000/users/';
+export const usersUrl = "http://localhost:3000/users/";
 
 /**
  * @task
  * Create the getLoginList(data) function that follows the requirements:
- * * Takes an array of objects as the 'data' argument 
+ * * Takes an array of objects as the 'data' argument
  * * Returns an array of the login properties values of every array item
  * Data example: const data = [{login: 'login1'}, {login: 'login2'}]
  * Call example: getLoginList(data) => ['login1', 'login2']
@@ -26,23 +26,25 @@ export const usersUrl = 'http://localhost:3000/users/';
  * Example: const getLoginList = (data) => {<Your code>}
  */
 
-const getLoginList = (data) => { return data.filter((i) => i.login !== undefined).map((i) => i.login); }
-    /**
-     * @task 
-     * Create the getData constant that stores the promise 
-     * of the fetched the URL variable:
-     * example: const getData = <node_fetch_function_call>
-     */
+const getLoginList = (data) => {
+    return data.map((i) => i.login);
+};
+/**
+ * @task
+ * Create the getData constant that stores the promise
+ * of the fetched the URL variable:
+ * example: const getData = <node_fetch_function_call>
+ */
 
 // Your code goes here ...
 const getData = fetch(usersUrl);
 
 /**
- * @task 
+ * @task
  * Create the result constant that stores the resolved promise value:
  * * Do not forget to convert the response to a JavaScript array when resolved
  * * Use the getLoginList() function to log the array of logins from fetched data in the console
- * * Return the array of logins when resolved 
+ * * Return the array of logins when resolved
  * Example: const result = getData
  *  .then(<Your_converting_code>)
  *  .then(<Your_logging_and_return_code>)
@@ -51,11 +53,10 @@ const getData = fetch(usersUrl);
 // Your code goes here ...
 export const result = getData
     .then((res) => res.json())
-    .then(data => {
+    .then((data) => {
         console.log(getLoginList(data));
         return getLoginList(data);
     });
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

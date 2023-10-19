@@ -4,5 +4,6 @@
     "typicode",
     "yoyoyo"
   ],
-  "terminal.explorerKind": "external"
+  "terminal.explorerKind": "external",
+  "editor.formatOnSave": true
 }

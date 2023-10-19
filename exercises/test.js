@@ -5,20 +5,27 @@
  * ```node exercises/test.js```
  */
 
+function onReject(errObj) {
+    console.log(errObj.message);
+}
 
-const usersUrl = 'http://localhost:3000/users/';
+const handlePromise = (promise) => {
+    return promise
+        .then((val) => {
+            return val;
+        })
+        .catch((err) => {
+            if (err.message) {
+                return onReject(err.message);
+            } else {
+                return err;
+            }
+        });
+};
 
-const getLoginList = (data) => { return data.filter((i) => i.login !== undefined).map((i) => i.login); }
-
-const getData = fetch(usersUrl);
-
-const result = getData
-    .then((res) => res.json())
-    .then(data => {
-        const arr = getLoginList((data));
-        console.log(getLoginList(data));
-        return arr
-    });
-
-
-console.log(result);
+handlePromise(
+    new Promise((res, rej) => {
+        null,
+        rej();
+    })
+);

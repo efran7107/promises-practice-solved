@@ -10,7 +10,7 @@
 
 const first = () => Promise.resolve(3);
 const second = (val) => {
-  return Promise.resolve(val + 7);
+    return Promise.resolve(val + 7);
 };
 
 /**
@@ -22,12 +22,11 @@ const second = (val) => {
 
 // Refactor the following code...
 export const handlePromise = first()
-.then((val) => val)
-.then((res) => second(res));
-handlePromise.then((val) => {
-  console.log(val);
-  return val
-})
+    .then((res) => second(res))
+    .then((val) => {
+        console.log(val);
+        return val;
+    });
 
 // const secondPromise = handlePromise.then((val) => val);
 // const final = secondPromise.then((res) => second(res));

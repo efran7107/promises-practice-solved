@@ -26,7 +26,7 @@ export function parsePromised(json) {
         } catch (err) {
             rej(err);
         }
-    })
+    });
 }
 
 /**
@@ -54,14 +54,16 @@ export function onReject(errObj) {
 
 export const handlePromise = (promise) => {
     return promise
-        .then(val => { return val })
-        .catch((err) => {
-            if (err !== undefined) {
-                return onReject(err);
-            } else {
-                return err;
-            }
+        .then((val) => {
+            return val;
         })
+        .catch((reason) => {
+            if (reason.message) {
+                return onReject(reason);
+            } else {
+                return reason;
+            }
+        });
 };
 
 // === TEST YOURSELF ===

@@ -7,11 +7,15 @@
 
 // === RESOLVED PROMISE
 // Update the promiseResolved variable to use the shortcut syntax
-export const promiseResolved = Promise.resolve("The PROMISE was RESOLVED").then((data) => data);
+export const promiseResolved = Promise.resolve("The PROMISE was RESOLVED").then(
+    (data) => data
+);
 
 // === REJECTED PROMISE
 // Update the promiseResolved variable to use the shortcut syntax
-export const promiseRejected = Promise.reject("The PROMISE was REJECTED").catch((err) => err);
+export const promiseRejected = Promise.reject("The PROMISE was REJECTED").catch(
+    (err) => err
+);
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"
